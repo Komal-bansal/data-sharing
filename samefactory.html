@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datasharing</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app=angular.module("savanapp",[]);  
+    
+    </script>
+    <script>
+        app.factory("myfactory",function(){
+    
+        var object={};
+            object.name="mike";
+            return object;
+    
+});
+    </script>
+    
+    <script>
+        app.controller("ctrl1",function($scope,myfactory){
+        myfactory.lastname="tyson";
+            $scope.msg1=myfactory.name+myfactory.lastname;
+    });
+   
+        app.controller("ctrl2",function($scope,myfactory){
+       
+            $scope.msg1=myfactory.name+myfactory.lastname;
+    });
+
+        
+        app.controller("ctrl3",function($scope,myfactory){
+       
+            $scope.msg1=myfactory.name+myfactory.lastname;
+    });
+    </script>
+</head>
+<body ng-app="savanapp">
+   <div ng-controller="ctrl1">
+      {{msg1}}
+       <div ng-controller="ctrl2">
+           {{msg1}}
+       </div>
+   </div>
+    <div ng-controller="ctrl2">{{msg1}}</div>
+    
+</body>
+</html>
