@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dataSharing</title>
+    <script src="angular.min.js"></script>
+    <script>
+        var app=angular.module("dataSharing",[]);
+        //factory is singleton
+        app.factory("myfactory",function(){
+            var object={};
+            object.firstName="Komal "
+            return object;
+        });
+        
+        app.controller("ctrl1",function($scope,myfactory){
+            myfactory.lastName="Bansal";
+           $scope.fullName=myfactory.firstName + "  " +myfactory.lastName+" This is controller 1"; 
+        });
+        
+         app.controller("ctrl2",function($scope,myfactory){
+            
+           $scope.fullName=myfactory.firstName + "  " +myfactory.lastName+" This is controller 2"; 
+        });
+        
+        
+         app.controller("ctrl3",function($scope,myfactory){
+            
+           $scope.fullName=myfactory.firstName + "  " +myfactory.lastName+" This is controller 3"; 
+        });
+        
+        
+    </script>
+</head>
+<body ng-app="dataSharing">
+   <div ng-controller="ctrl1">
+      {{fullName}}
+       <div ng-controller="ctrl2">
+           {{fullName}}
+       </div>
+   </div>
+    <div ng-controller="ctrl3">
+        {{fullName}}
+    </div>
+</body>
+</html>
